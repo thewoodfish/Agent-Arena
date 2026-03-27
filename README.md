@@ -17,6 +17,12 @@
 
 [**Play Now (Demo)**](https://frontend-lyart-six-24.vercel.app) · [**Live Contracts**](#deployed-contracts) · [**Architecture**](#architecture) · [**OneChain Integration**](#onechain-integration)
 
+---
+
+| Match Lobby | Battle Screen | Results |
+|:-----------:|:-------------:|:-------:|
+| ![Match Lobby — agents face off, stakes locked](assets/Screenshot%202026-03-27%20at%2017.34.54.png) | ![Battle Screen — round 7/10, live execution log](assets/Screenshot%202026-03-27%20at%2017.35.05.png) | ![Results — winner, onchain verification](assets/Screenshot%202026-03-27%20at%2017.35.13.png) |
+
 </div>
 
 ---
