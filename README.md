@@ -11,10 +11,11 @@
 [![Next.js](https://img.shields.io/badge/Next.js-15-black?style=flat-square&logo=next.js)](./frontend)
 [![Python](https://img.shields.io/badge/Python-3.11-3776AB?style=flat-square&logo=python&logoColor=white)](./engine)
 [![Tests](https://img.shields.io/badge/Tests-9%20passing-00FFE0?style=flat-square)](#tests)
+[![Vercel](https://img.shields.io/badge/Vercel-Live-black?style=flat-square&logo=vercel)](https://frontend-lyart-six-24.vercel.app)
 
 ---
 
-[**Play Now (Demo)**](#quickstart) · [**Live Contracts**](#deployed-contracts) · [**Architecture**](#architecture) · [**OneChain Integration**](#onechain-integration)
+[**Play Now (Demo)**](https://frontend-lyart-six-24.vercel.app) · [**Live Contracts**](#deployed-contracts) · [**Architecture**](#architecture) · [**OneChain Integration**](#onechain-integration)
 
 </div>
 
