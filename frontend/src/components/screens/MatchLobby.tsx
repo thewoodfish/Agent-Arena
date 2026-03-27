@@ -7,7 +7,7 @@ import { useShallow } from 'zustand/react/shallow';
 import { Panel } from '@/components/ui/Panel';
 import { Button } from '@/components/ui/Button';
 import { generateDemoAgent, DEMO_MATCH_ID } from '@/lib/demoData';
-import { STAKE_AMOUNT } from '@/lib/constants';
+import { STAKE_AMOUNT, PACKAGE_ID, ONECHAIN_EXPLORER } from '@/lib/constants';
 import type { AgentConfig, MatchState } from '@/lib/types';
 import { useWalletActions } from '@/hooks/useWallet';
 
@@ -152,9 +152,20 @@ export function MatchLobby() {
             </div>
           </div>
           <div className="mt-3 pt-3 border-t border-[var(--border)] flex flex-wrap gap-4 text-[11px] font-mono text-[var(--muted)]">
-            <span>Contract: 0xCAFE…CAFE</span>
+            {demoMode ? (
+              <span>DEMO MODE — simulated</span>
+            ) : (
+              <a
+                href={`${ONECHAIN_EXPLORER}/object/${PACKAGE_ID}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-[var(--cyan)] transition-colors"
+              >
+                Contract: {PACKAGE_ID.slice(0, 8)}…{PACKAGE_ID.slice(-4)} ↗
+              </a>
+            )}
             <span>Engine: v1.0.0</span>
-            <span>{demoMode ? 'DEMO MODE — simulated' : `Network: ${process.env.NEXT_PUBLIC_NETWORK || 'devnet'}`}</span>
+            <span>Network: {process.env.NEXT_PUBLIC_NETWORK || 'testnet'}</span>
           </div>
         </Panel>
 

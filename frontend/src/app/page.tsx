@@ -10,6 +10,8 @@ import { BattleScreen } from '@/components/screens/BattleScreen';
 import { ResultsScreen } from '@/components/screens/ResultsScreen';
 import { ToastNotification } from '@/components/ToastNotification';
 import { useWalletActions } from '@/hooks/useWallet';
+import { useDisplayName } from '@/hooks/useOneID';
+import { PACKAGE_ID, ONECHAIN_EXPLORER } from '@/lib/constants';
 import type { Screen } from '@/store/gameStore';
 
 const STEPS: { id: Screen; label: string }[] = [
@@ -63,6 +65,7 @@ function WalletButton() {
   const demoMode = useGameStore((s) => s.demoMode);
   const wallet = useWalletActions();
   const [connecting, setConnecting] = useState(false);
+  const displayName = useDisplayName(connected && !demoMode ? address : null);
 
   const handleConnect = async () => {
     setConnecting(true);
@@ -74,7 +77,7 @@ function WalletButton() {
       <div className="flex items-center gap-2 px-3 py-1.5 rounded-sm border border-[var(--border)] bg-[var(--panel)]">
         <span className="w-1.5 h-1.5 rounded-full bg-[var(--green)]" style={{ animation: 'pulse 2s infinite' }} />
         <span className="text-[10px] font-mono text-[var(--cyan)]">
-          {address.slice(0, 6)}…{address.slice(-4)}
+          {demoMode ? `${address.slice(0, 6)}…${address.slice(-4)}` : displayName}
         </span>
         <span className="text-[10px] font-mono text-[var(--muted)]">| OneChain testnet</span>
       </div>
@@ -209,9 +212,16 @@ export default function Home() {
             ENGINE READY
           </span>
           <span>·</span>
-          <span>NETWORK: DEVNET</span>
+          <span>NETWORK: TESTNET</span>
           <span>·</span>
-          <span>CONTRACTS: AGENT_ARENA</span>
+          <a
+            href={`${ONECHAIN_EXPLORER}/object/${PACKAGE_ID}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-[var(--cyan)] transition-colors"
+          >
+            CONTRACTS: {PACKAGE_ID.slice(0, 8)}…{PACKAGE_ID.slice(-4)} ↗
+          </a>
           <span className="ml-auto">v1.0.0</span>
         </div>
       </footer>

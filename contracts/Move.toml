@@ -7,7 +7,7 @@ edition = "2024.beta"
 agent_arena = "0x0"
 
 [dependencies]
-One = { git = "https://github.com/one-chain-labs/onechain.git", subdir = "crates/sui-framework/packages/one-framework", rev = "1.0.4" }
+One = { git = "https://github.com/one-chain-labs/onechain.git", subdir = "crates/sui-framework/packages/one-framework", rev = "v1.1.1", override = true }
 
 [dev-addresses]
 agent_arena = "0x0"

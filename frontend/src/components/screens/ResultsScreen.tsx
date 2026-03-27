@@ -8,6 +8,7 @@ import { Panel } from '@/components/ui/Panel';
 import { Button } from '@/components/ui/Button';
 import { TxRow } from '@/components/ui/TxRow';
 import { DEMO_TX_HASH, DEMO_BLOCK_NUMBER } from '@/lib/demoData';
+import { ONECHAIN_EXPLORER } from '@/lib/constants';
 
 const UPGRADE_CARDS = [
   { icon: '🧠', title: 'LLM Policy', desc: 'GPT-4 powered decision making' },
@@ -136,6 +137,16 @@ export function ResultsScreen() {
             verified
             simulated={demoMode}
           />
+          {!demoMode && battleOutcome.txHash && (
+            <a
+              href={`${ONECHAIN_EXPLORER}/txblock/${battleOutcome.txHash}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-2 flex items-center gap-1.5 text-[10px] font-mono text-[var(--cyan)] hover:opacity-80 transition-opacity"
+            >
+              <span>View on OneScan ↗</span>
+            </a>
+          )}
         </Panel>
 
         {/* Upgrade teaser */}
