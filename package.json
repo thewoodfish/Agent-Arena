@@ -1,0 +1,14 @@
+{
+  "name": "agent-arena",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "shared"
+  ],
+  "scripts": {
+    "dev": "make dev",
+    "build": "make build",
+    "test": "make test"
+  }
+}

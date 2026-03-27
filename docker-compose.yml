@@ -1,0 +1,31 @@
+version: '3.9'
+
+services:
+  engine:
+    build:
+      context: ./engine
+    ports:
+      - "8000:8000"
+    environment:
+      - PORT=8000
+      - CORS_ORIGIN=http://localhost:3000
+      - DEBUG=true
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      engine:
+        condition: service_healthy
+    environment:
+      - NEXT_PUBLIC_ENGINE_URL=http://engine:8000
+      - NEXT_PUBLIC_CONTRACT_ADDRESS=0x0000000000000000000000000000000000000000000000000000000000000cafe
+      - NEXT_PUBLIC_NETWORK=devnet
+      - NEXT_PUBLIC_DEMO_MODE=true
